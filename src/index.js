@@ -1,5 +1,5 @@
-import sayOne from './modules/one';
+import timer from './modules/timer';
 import sayTwo from './modules/two';
 
-sayOne();
+timer('25 december 2021');
 sayTwo();
