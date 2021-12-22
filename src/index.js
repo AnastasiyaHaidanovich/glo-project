@@ -1,5 +1,8 @@
 import timer from './modules/timer';
-import sayTwo from './modules/two';
+import menu from './modules/menu';
+import modal from './modules/modal';
+
 
 timer('25 december 2021');
-sayTwo();
+menu();
+modal();
