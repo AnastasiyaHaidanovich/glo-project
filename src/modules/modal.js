@@ -43,10 +43,10 @@ const modal = () => {
                     count -= 0.05;
                     modal.style.opacity = `${count}`;
                     idInterval = requestAnimationFrame(close);
-                } else {
-                    cancelAnimationFrame(idInterval);
-                    modal.style.display = "none";
-                }
+                    } else {
+                        cancelAnimationFrame(idInterval);
+                        modal.style.display = "none";
+                    }
                 };
                 idInterval = requestAnimationFrame(close);
             };
