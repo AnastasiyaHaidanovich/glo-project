@@ -32,11 +32,11 @@ const menu = () => {
         });
     });
 
-    console.log(toServiceBtn);
+    // console.log(toServiceBtn);
     toServiceBtn.addEventListener("click", (e) => {
         e.preventDefault();
         const blockID = toServiceBtn.getAttribute('href');
-        console.log(blockID);
+        // console.log(blockID);
         document.querySelector("" + blockID).scrollIntoView({
             behavior: "smooth",
             block: "start"

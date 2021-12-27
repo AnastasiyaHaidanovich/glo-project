@@ -61,7 +61,7 @@ const modal = () => {
     });
 
     
-    console.log(window.innerWidth);
+    // console.log(window.innerWidth);
 };
 
 export default modal;
