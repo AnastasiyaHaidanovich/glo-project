@@ -32,11 +32,14 @@ const verification = () => {
 
     const inputTel = document.querySelectorAll("input[type=tel]");
     
-    inputTel.forEach(tel => {
-        tel.addEventListener("input", (e) => {
-            e.target.value = e.target.value.replace(/![0-9()-]+/, ""); 
-        });
-    });
+    // inputTel.forEach(telElem => {
+    //     telElem.addEventListener("input", (e) => {
+    //         let isError = false;
+    //         if (e.target.value.exec(/^(\+7|7|8)?[\s\-])){
+
+    //         }
+    //     });
+    // });
 };
 
 export default verification;

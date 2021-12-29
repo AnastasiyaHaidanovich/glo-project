@@ -1,47 +1,39 @@
 const menu = () => {
-    const menuBtn = document.querySelector(".menu");
     const menu = document.querySelector("menu");
     const closeBtn = menu.querySelector(".close-btn");
     const menuItems = menu.querySelectorAll("ul>li>a");
-    const toServiceBtn = document.querySelector("main>a");
+    const toServiceBtn = document.querySelector(".service-btn>img");
+    const body = document.querySelector("body");
 
-    const handleMenu = () => {
-        // if (!menu.style.transform){
-        //     menu.style.transform = "translateX(0)";   
-        // } else {
-        //     menu.style.transform = "";  
-        // }
-        menu.classList.toggle("active-menu");
-    };
-    
-    menuBtn.addEventListener("click", handleMenu);
-    closeBtn.addEventListener("click", handleMenu);
-
-    menuItems.forEach(menuItem => {
-        menuItem.addEventListener("click", (e) => {
+    body.addEventListener('click', (e) => {
+        if (e.target.closest(".menu")){
+            menu.classList.toggle("active-menu");
+        } else if (e.target === toServiceBtn){
+            
             e.preventDefault();
-
-            const blockID = menuItem.getAttribute('href');
-                    
+            
+            const blockID = "#service-block";
+                            
             document.querySelector("" + blockID).scrollIntoView({
                 behavior: "smooth",
                 block: "start"
-            });
-
-            handleMenu();
-        });
-    });
-
-    // console.log(toServiceBtn);
-    toServiceBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        const blockID = toServiceBtn.getAttribute('href');
-        // console.log(blockID);
-        document.querySelector("" + blockID).scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-    });
+                });
+        } else if (e.target == closeBtn) {
+            menu.classList.toggle("active-menu");
+        } else if (e.target.tagName == "A" && menu.classList.contains("active-menu")){
+            e.preventDefault();
+                
+            const blockID = e.target.getAttribute('href');
+                            
+            document.querySelector("" + blockID).scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+                });
+            menu.classList.toggle("active-menu");
+        } else if (menu.classList.contains("active-menu") && !e.target.closest(".active-menu")){
+            menu.classList.toggle("active-menu");
+        }
+    });    
 };
 
 export default menu;
