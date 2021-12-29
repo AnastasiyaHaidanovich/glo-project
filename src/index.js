@@ -4,6 +4,7 @@ import modal from './modules/modal';
 import tabs from './modules/tabs';
 import verification from './modules/verification';
 import slider from './modules/slider';
+import calc from './modules/calc';
 
 
 
@@ -13,3 +14,4 @@ modal();
 verification();
 tabs();
 slider();
+calc(100);
