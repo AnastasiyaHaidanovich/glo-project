@@ -16,8 +16,12 @@ const verification = () => {
     
     for(let elem of textInputs){
         elem.addEventListener("input", (e) => {
-            e.target.value = e.target.value.replace(/\d+/, "");
-            e.target.value = e.target.value.replace(/[А-Яа-я]+/, "");            
+            if(e.target.value.match(/[а-я]+/i)){
+                let name = e.target.value.match(/[а-я]+/i)[0];
+                e.target.value = name;
+            } else {
+                e.target.value = "";
+            }
         });
     }
 
@@ -25,21 +29,25 @@ const verification = () => {
     
     inputEmail.forEach(email => {
         email.addEventListener("input", (e) => {
-                e.target.value = e.target.value.replace(/[а-я]/gi, ""); 
+            if(e.target.value.match(/[а-я%&+=,()?^$#]+/i)){
+                e.target.value = e.target.value.replace(/[а-я%&+=,()?^$#]+/i, "");
+            } 
         });
     });
     // console.log();
 
     const inputTel = document.querySelectorAll("input[type=tel]");
     
-    // inputTel.forEach(telElem => {
-    //     telElem.addEventListener("input", (e) => {
-    //         let isError = false;
-    //         if (e.target.value.exec(/^(\+7|7|8)?[\s\-])){
-
-    //         }
-    //     });
-    // });
+    inputTel.forEach(telElem => {
+        telElem.addEventListener("input", (e) => {
+            if(e.target.value.match(/[0-9-()+]+/)){
+                let tel = e.target.value.match(/[0-9-()+]+/)[0];
+                e.target.value = tel;
+            } else {
+                e.target.value = "";
+            }
+        });
+    });
 };
 
 export default verification;
