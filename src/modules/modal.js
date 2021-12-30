@@ -1,3 +1,5 @@
+import { animate } from './helpers';
+
 const modal = () => {
     const buttons = document.querySelectorAll(".popup-btn");
     const modal = document.querySelector(".popup");
@@ -8,19 +10,15 @@ const modal = () => {
                 modal.style.display = "block";
                 modal.style.opacity = 0;
 
-                let idInterval;
-                let count = 0;
-
-                const appear = () => {
-                    if (count <= 1){
-                    count += 0.05;
-                    modal.style.opacity = `${count}`;
-                    idInterval = requestAnimationFrame(appear);
-                } else {
-                    cancelAnimationFrame(idInterval);
-                }
-                };
-                idInterval = requestAnimationFrame(appear);
+                animate({
+                    duration: 1000,
+                    timing(timeFraction) {
+                      return timeFraction;
+                    },
+                    draw(progress) {
+                      modal.style.opacity = progress;
+                    }
+                });
             };
             
             if(window.innerWidth > 768){
@@ -32,37 +30,29 @@ const modal = () => {
             // setInterval(appear, 50);
         });
     });
+    
+    const smoothClose = () => {
+        animate({
+            duration: 1000,
+            timing(timeFraction) {
+                return timeFraction;
+            },
+            draw(progress) {
+                modal.style.opacity = 1 - progress;
+            }
+        });
+        setTimeout(()=> {
+            modal.style.display = "none";
+        }, 1000);
+    };
 
-    function modalClose() {
-            const smoothClose = () => {
-                let idInterval;
-                let count = 1;
-
-                const close = () => {
-                    if (count >= 0){
-                    count -= 0.05;
-                    modal.style.opacity = `${count}`;
-                    idInterval = requestAnimationFrame(close);
-                    } else {
-                        cancelAnimationFrame(idInterval);
-                        modal.style.display = "none";
-                    }
-                };
-                idInterval = requestAnimationFrame(close);
-            };
-
+    modal.addEventListener('click', (e) => {
+        if(! e.target.closest(".popup-content") || e.target.classList.contains("popup-close")){
             if (window.innerWidth > 768){
                 smoothClose();
             } else {
                 modal.style.display = "none";
             }
-            
-    }
-    
-    modal.addEventListener('click', (e) => {
-        if(!e.target.closest(".popup-content") || e.target.classList.contains("popup-close")){
-            modalClose();
-            // modal.style.display = "none";
         }
         
     });
