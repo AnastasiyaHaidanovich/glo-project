@@ -13,5 +13,5 @@ menu();
 modal();
 verification();
 tabs();
-slider();
+slider(".portfolio-content", ".portfolio-item",  ".portfolio-dots", "portfolio-item-active","dot-active");
 calc(100);
