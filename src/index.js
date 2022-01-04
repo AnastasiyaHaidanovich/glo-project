@@ -5,13 +5,15 @@ import tabs from './modules/tabs';
 import verification from './modules/verification';
 import slider from './modules/slider';
 import calc from './modules/calc';
+import request from './modules/ajaxRequests';
 
 
 
-timer('31 december 2021');
+timer('07 january 2022');
 menu();
 modal();
 verification();
 tabs();
 slider(".portfolio-content", ".portfolio-item",  ".portfolio-dots", "portfolio-item-active","dot-active");
 calc(100);
+request();
