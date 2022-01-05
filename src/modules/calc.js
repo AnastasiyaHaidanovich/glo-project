@@ -33,6 +33,18 @@ const calc = (price = 100) => {
         }
 
         console.log(totalValue);
+
+        // let count = 0;
+        // let timeId = setInterval(() => {
+        //     total.textContent = count;
+        //     if (count >= totalValue){
+        //         clearInterval(timeId);
+        //     }
+        //     count += 10;
+        // }, 10);
+        
+        
+
         animate({
             duration: 500,
             timing(timeFraction) {
