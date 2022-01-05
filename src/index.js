@@ -8,7 +8,7 @@ import calc from './modules/calc';
 
 
 
-timer('31 december 2021');
+timer('07 january 2022');
 menu();
 modal();
 verification();

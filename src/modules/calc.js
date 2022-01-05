@@ -33,15 +33,27 @@ const calc = (price = 100) => {
         }
 
         console.log(totalValue);
-        animate({
-            duration: 500,
-            timing(timeFraction) {
-              return timeFraction;
-            },
-            draw(progress) {                
-                total.textContent = Math.round(totalValue * progress);
+
+        let count = 0;
+        let timeId = setInterval(() => {
+            total.textContent = count;
+            if (count >= totalValue){
+                clearInterval(timeId);
             }
-          });
+            count += 10;
+        }, 10);
+        
+        
+
+        // animate({
+        //     duration: 500,
+        //     timing(timeFraction) {
+        //       return timeFraction;
+        //     },
+        //     draw(progress) {                
+        //         total.textContent = Math.round(totalValue * progress);
+        //     }
+        //   });
 
     };
     
