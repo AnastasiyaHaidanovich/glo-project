@@ -1,20 +1,22 @@
 const request = () => {
-    const getData = (url, urlSend) => {
-        fetch(url)
+    let newData;
+    const getData = (url) => {
+        return fetch(url)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                sendData(urlSend, JSON.stringify(data));
+                newData = data;
+                console.log(newData);
             })
             .catch(error => {
                 console.log(error);
             });
     };
 
-    const sendData = (url, dataSend) => {
+    const sendData = (url, data) => {
         return fetch(url, {
             method: "POST",
-            body: dataSend,
+            body: JSON.stringify(data),
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
             },
@@ -27,7 +29,12 @@ const request = () => {
                 console.log(error);
             });
     };
-    getData("db.json", "https://jsonplaceholder.typicode.com/posts");
+
+    getData("db.json");
+    
+    setTimeout(() => {
+         sendData("https://jsonplaceholder.typicode.com/posts", newData);
+    }, 1000);
 };
 
 export default request;
