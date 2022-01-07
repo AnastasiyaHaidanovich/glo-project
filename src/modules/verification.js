@@ -11,13 +11,24 @@ const verification = () => {
     const textName2 = document.getElementById("form2-name");
     const textName3 = document.getElementById("form3-name");
     const textMessage = document.getElementById("form2-message");
+    
+    
+    textMessage.addEventListener("input", (e) => {
+        if(e.target.value.match(/[0-9а-я-().,!?\ ]+/i)){
+            let name = e.target.value.match(/[0-9а-я-().,!?\ ]+/i);
+            e.target.value = name;
+        } else {
+            e.target.value = "";
+        }
+    });
+    
 
-    textInputs.push(textName1, textName2, textName3, textMessage);
+    textInputs.push(textName1, textName2, textName3);
     
     for(let elem of textInputs){
         elem.addEventListener("input", (e) => {
-            if(e.target.value.match(/[а-я]+/i)){
-                let name = e.target.value.match(/[а-я]+/i)[0];
+            if(e.target.value.match(/[а-я\ ]+/i)){
+                let name = e.target.value.match(/[а-я\ ]+/i)[0];
                 e.target.value = name;
             } else {
                 e.target.value = "";
