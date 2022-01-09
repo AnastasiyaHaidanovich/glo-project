@@ -10,22 +10,25 @@ const sendForm = ({formId, someElem = []}) => {
         let successName = true;
         let successPhone = true;
         let successMess = true;
+        let successEmail = true;
 
         console.dir(list);
         list.forEach(elem => {
             if (elem.className === "form-name"){
-                successName = /[0-9\ ]+/i.test(elem.value);
+                successName = /[а-я\ ]+/i.test(elem.value);
             } 
             if (elem.className === "form-message"){
                 successMess = /[0-9а-я-().,!?\ ]+/i.test(elem.value);
             } 
+            if (elem.className === "form-email"){
+                successEmail = /[0-9a-z-._@]+/i.test(elem.value);
+            }
             if (elem.className === "form-phone"){
                 successPhone = /[0-9-()+]+/.test(elem.value);
-            }  
-                  
+            }                    
         });
 
-        if (successName && successMess && successPhone){
+        if (successName && successEmail && successMess && successPhone){
             success = true;
         } else {
             success = false;
