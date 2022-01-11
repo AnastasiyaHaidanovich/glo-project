@@ -12,7 +12,6 @@ const sendForm = ({formId, someElem = []}) => {
         let successMess = true;
         let successEmail = true;
 
-        console.dir(list);
         list.forEach(elem => {
             if (elem.className === "form-name"){
                 successName = /[а-я\ ]+/i.test(elem.value);
@@ -52,9 +51,19 @@ const sendForm = ({formId, someElem = []}) => {
         const formData = new FormData(form);
         const formBody = {};
 
+        const loaderImg = document.createElement("img");
+        const loaderBlock = document.createElement("div");
+
+        loaderImg.setAttribute("src","../../images/icons/loader.svg");
+        loaderImg.setAttribute("width","20px");
+        loaderImg.setAttribute("id","loader");
+        loaderBlock.appendChild(loaderImg);
+        
         statusBlock.textContent = loadText;
+        
         statusBlock.style.color = "darkgrey";
         form.append(statusBlock); 
+        form.append(loaderBlock);
 
         formData.forEach((value, key) => {
             formBody[key] = value;
@@ -78,7 +87,7 @@ const sendForm = ({formId, someElem = []}) => {
                     elem.value = "";
                 });
                 statusBlock.textContent = successText;
-                console.log(data);
+                loaderBlock.remove();
             })
             .catch(error => {
                 statusBlock.textContent = errorText;
