@@ -7,14 +7,24 @@ const sendForm = ({formId, someElem = []}) => {
 
     const validate = (list) => {
         let success = true;
-        let successName = true;
-        let successPhone = true;
+        let successName = false;
+        let successPhone = false;
         let successMess = true;
         let successEmail = true;
 
         list.forEach(elem => {
-            if (elem.className === "form-name"){
-                successName = /[а-я\ ]+/i.test(elem.value);
+            if (elem.className === "form-name" && elem.value.length >= 2){
+               successName = /[а-я\ ]+/i.test(elem.value);
+                // } else {
+                //     successName = false;
+                //     // const label = document.createElement("label");
+                //     // label.setAttribute("for", "form1-name");
+                //     // label.style.fontSize = "12px";
+                //     // label.textContent = "Минимум 2 символа";
+                //     // elem.parentElement.append(label);
+                //     // console.dir(label);
+                //     // console.log(label);
+                // }                
             } 
             if (elem.className === "form-message"){
                 successMess = /[0-9а-я-().,!?\ ]+/i.test(elem.value);
@@ -22,7 +32,7 @@ const sendForm = ({formId, someElem = []}) => {
             if (elem.className === "form-email"){
                 successEmail = /[0-9a-z-._@]+/i.test(elem.value);
             }
-            if (elem.className === "form-phone"){
+            if (elem.className === "form-phone" && elem.value.length >= 11){
                 successPhone = /[0-9-()+]+/.test(elem.value);
             }                    
         });
@@ -94,6 +104,8 @@ const sendForm = ({formId, someElem = []}) => {
             });
         } else {
             alert("Данные не валидны");
+            statusBlock.remove();
+            loaderBlock.remove();
         }
     };
 
