@@ -1,0 +1,17 @@
+body { 
+    background: url("bg.jpg"); 
+}
+.cover {
+    width: 60%;
+    padding: 30px 0;
+    border-radius: 20px;
+    background-color:rgb(128, 255, 212, 0.8);
+    margin: 70px auto;
+}
+p {
+    padding: 0 35px;
+    font-family: Mulish, serif;
+    color: rgb(71, 71, 6);
+    font-size: 24px;
+    font-weight: bold;
+}

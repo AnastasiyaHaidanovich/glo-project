@@ -1,0 +1,26 @@
+{
+  "name": "glo-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode=production",
+    "watch": "webpack --watch --mode=development",
+    "start": "webpack serve --mode=development --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnastasiyaHaidanovich/glo-project.git"
+  },
+  "author": "Anastasiya Haidanovich",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnastasiyaHaidanovich/glo-project/issues"
+  },
+  "homepage": "https://github.com/AnastasiyaHaidanovich/glo-project#readme",
+  "devDependencies": {
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.6.0"
+  }
+}
